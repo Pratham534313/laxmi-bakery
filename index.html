@@ -1,0 +1,760 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Laxmi Bakery Bhuj | Cakes, Pastries & Bakery</title>
+<meta name="description" content="Laxmi Bakery in Bhuj — cakes, pastries, breads and bakery favourites for birthdays, celebrations and everyday cravings.">
+<meta property="og:title" content="Laxmi Bakery Bhuj | Cakes, Pastries & Bakery">
+<meta property="og:description" content="Cakes, pastries, breads and bakery favourites for birthdays, celebrations and everyday cravings in Bhuj, Gujarat.">
+<meta property="og:type" content="business.business">
+<meta name="theme-color" content="#3B2116">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,500;0,600;0,700;1,500&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+<style>
+  :root{
+    --cream:#FBF5EC;
+    --cream-2:#F3E9D8;
+    --brown:#3B2116;
+    --brown-2:#5A3826;
+    --caramel:#C4914B;
+    --gold:#E3B36A;
+    --maroon:#7A2E2E;
+    --white:#FFFFFF;
+    --ink:#2B1A10;
+    --muted:#7C6C5E;
+    --radius:18px;
+    --shadow: 0 20px 45px -20px rgba(59,33,22,0.35);
+    --serif: 'Playfair Display', Georgia, serif;
+    --sans: 'Poppins', 'Segoe UI', sans-serif;
+  }
+  *{box-sizing:border-box; margin:0; padding:0;}
+  html{scroll-behavior:smooth;}
+  body{
+    font-family: var(--sans);
+    background: var(--cream);
+    color: var(--ink);
+    overflow-x:hidden;
+    line-height:1.6;
+  }
+  img{max-width:100%; display:block;}
+  a{text-decoration:none; color:inherit;}
+  ul{list-style:none;}
+  button{font-family:inherit; cursor:pointer; border:none;}
+  .container{max-width:1240px; margin:0 auto; padding:0 24px;}
+  section{padding:100px 0;}
+  h1,h2,h3{font-family:var(--serif); color:var(--brown); font-weight:600;}
+  .eyebrow{color:var(--caramel); font-weight:600; letter-spacing:.03em; margin-bottom:10px; display:block;}
+  .section-head{max-width:640px; margin:0 auto 56px; text-align:center;}
+  .section-head h2{font-size:clamp(2rem,4vw,2.8rem); line-height:1.15;}
+  .section-head p{color:var(--muted); margin-top:14px; font-size:1.05rem;}
+  .btn{
+    display:inline-flex; align-items:center; gap:10px;
+    padding:15px 30px; border-radius:100px; font-weight:600; font-size:.95rem;
+    transition: transform .25s ease, box-shadow .25s ease, background .25s ease;
+  }
+  .btn-primary{background:var(--maroon); color:#fff; box-shadow:0 12px 24px -10px rgba(122,46,46,.6);}
+  .btn-primary:hover{transform:translateY(-3px); box-shadow:0 16px 30px -10px rgba(122,46,46,.7);}
+  .btn-outline{background:transparent; color:#fff; border:1.5px solid rgba(255,255,255,.7);}
+  .btn-outline:hover{background:rgba(255,255,255,.15); transform:translateY(-3px);}
+  .btn-ghost{background:var(--cream-2); color:var(--brown);}
+  .btn-ghost:hover{background:var(--gold); color:#fff; transform:translateY(-3px);}
+
+  /* reveal */
+  .reveal{opacity:0; transform:translateY(24px); transition:opacity .7s ease, transform .7s ease;}
+  .reveal.in{opacity:1; transform:none;}
+  @media (prefers-reduced-motion: reduce){
+    .reveal{opacity:1; transform:none; transition:none;}
+    *{scroll-behavior:auto !important;}
+  }
+
+  /* NAVBAR */
+  header{
+    position:fixed; top:0; left:0; right:0; z-index:1000;
+    background:rgba(251,245,236,.85); backdrop-filter:blur(10px);
+    border-bottom:1px solid rgba(59,33,22,.08);
+    transition:padding .3s ease, box-shadow .3s ease;
+  }
+  header.scrolled{box-shadow:0 8px 24px -16px rgba(0,0,0,.2);}
+  .nav{display:flex; align-items:center; justify-content:space-between; padding:20px 24px; transition:padding .3s ease;}
+  header.scrolled .nav{padding:12px 24px;}
+  .logo{font-family:var(--serif); line-height:1; color:var(--brown);}
+  .logo b{display:block; font-size:1.35rem; letter-spacing:.04em;}
+  .logo span{display:block; font-size:.7rem; letter-spacing:.35em; color:var(--caramel); font-weight:600;}
+  .nav-links{display:flex; gap:34px; font-weight:500; font-size:.95rem;}
+  .nav-links a{position:relative; padding:4px 0;}
+  .nav-links a::after{content:''; position:absolute; left:0; bottom:-2px; width:0; height:2px; background:var(--caramel); transition:width .25s ease;}
+  .nav-links a:hover::after{width:100%;}
+  .nav-cta{display:flex; align-items:center; gap:18px;}
+  .nav-cta .btn{padding:12px 22px; font-size:.88rem;}
+  .hamburger{display:none; flex-direction:column; gap:5px; background:none; padding:6px;}
+  .hamburger span{width:26px; height:2px; background:var(--brown); transition:.3s;}
+  .mobile-menu{
+    position:fixed; top:0; right:-100%; width:78%; max-width:320px; height:100vh;
+    background:var(--cream); z-index:1100; padding:100px 32px 40px; transition:right .35s ease;
+    box-shadow:-10px 0 40px rgba(0,0,0,.2);
+  }
+  .mobile-menu.open{right:0;}
+  .mobile-menu a{display:block; padding:14px 0; font-family:var(--serif); font-size:1.2rem; border-bottom:1px solid rgba(59,33,22,.08);}
+  .menu-close{position:absolute; top:28px; right:28px; font-size:1.5rem; background:none;}
+  .overlay{position:fixed; inset:0; background:rgba(20,10,5,.5); z-index:1050; opacity:0; pointer-events:none; transition:opacity .35s ease;}
+  .overlay.open{opacity:1; pointer-events:all;}
+
+  /* HERO */
+  .hero{
+    position:relative; min-height:100vh; display:flex; align-items:center;
+    background:
+      linear-gradient(180deg, rgba(20,10,6,.55), rgba(20,10,6,.75)),
+      url('https://images.unsplash.com/photo-1578985545062-69928b1d9587?auto=format&fit=crop&w=1600&q=80') center/cover no-repeat;
+  }
+  .hero-content{color:#fff; max-width:660px; padding-top:90px;}
+  .hero h1{color:#fff; font-size:clamp(2.6rem,6vw,4.2rem); line-height:1.08; font-weight:700;}
+  .hero p.sub{margin:22px 0 34px; font-size:1.15rem; color:rgba(255,255,255,.88); max-width:520px;}
+  .hero-btns{display:flex; gap:16px; flex-wrap:wrap;}
+  .trust{display:flex; gap:28px; flex-wrap:wrap; margin-top:52px;}
+  .trust div{color:#fff; font-size:.9rem; display:flex; align-items:center; gap:8px; opacity:.92;}
+  .trust i{color:var(--gold);}
+
+  /* floating whatsapp */
+  .float-wa{
+    position:fixed; bottom:28px; right:28px; width:60px; height:60px; border-radius:50%;
+    background:#25D366; color:#fff; display:flex; align-items:center; justify-content:center;
+    font-size:1.6rem; z-index:900; box-shadow:0 12px 26px -8px rgba(0,0,0,.4);
+  }
+  .float-wa::before{
+    content:''; position:absolute; inset:0; border-radius:50%; background:#25D366; opacity:.6;
+    animation:pulse 2.2s infinite;
+  }
+  @keyframes pulse{0%{transform:scale(1); opacity:.55;} 100%{transform:scale(1.9); opacity:0;}}
+  @media (prefers-reduced-motion: reduce){ .float-wa::before{animation:none;} }
+
+  /* CARDS common */
+  .grid{display:grid; gap:28px;}
+  .cards-3{grid-template-columns:repeat(3,1fr);}
+  .cards-4{grid-template-columns:repeat(4,1fr);}
+  .card{
+    background:var(--white); border-radius:var(--radius); overflow:hidden; box-shadow:var(--shadow);
+    transition:transform .35s ease, box-shadow .35s ease;
+  }
+  .card:hover{transform:translateY(-8px);}
+  .card .img-wrap{aspect-ratio:4/3; overflow:hidden;}
+  .card .img-wrap img{width:100%; height:100%; object-fit:cover; transition:transform .5s ease;}
+  .card:hover .img-wrap img{transform:scale(1.08);}
+  .card-body{padding:22px 22px 26px;}
+  .card-body h3{font-size:1.2rem; margin-bottom:8px;}
+  .card-body p{color:var(--muted); font-size:.92rem; margin-bottom:16px;}
+  .enquire{
+    display:inline-flex; align-items:center; gap:8px; font-weight:600; font-size:.88rem;
+    color:var(--maroon); border-bottom:1.5px solid var(--maroon); padding-bottom:2px;
+  }
+
+  /* section tinted bg */
+  .tint{background:var(--cream-2);}
+
+  /* filters */
+  .filters{display:flex; justify-content:center; gap:12px; flex-wrap:wrap; margin-bottom:44px;}
+  .filter-btn{
+    padding:10px 22px; border-radius:100px; background:var(--white); color:var(--brown-2);
+    font-weight:500; font-size:.9rem; border:1px solid rgba(59,33,22,.12); transition:.25s;
+  }
+  .filter-btn.active, .filter-btn:hover{background:var(--maroon); color:#fff; border-color:var(--maroon);}
+  .product-grid{display:grid; grid-template-columns:repeat(4,1fr); gap:24px;}
+  .product{
+    background:var(--white); border-radius:16px; overflow:hidden; box-shadow:0 14px 30px -18px rgba(59,33,22,.3);
+    transition:opacity .4s ease, transform .4s ease;
+  }
+  .product img{aspect-ratio:1/1; object-fit:cover; width:100%;}
+  .product .p-info{padding:16px 16px 20px;}
+  .product .p-info h4{font-family:var(--serif); font-size:1.02rem; color:var(--brown); margin-bottom:10px;}
+  .product .p-info a{font-size:.82rem; font-weight:600; color:var(--maroon);}
+  .product.hide{display:none;}
+
+  /* custom enquiry split */
+  .split{display:grid; grid-template-columns:1fr 1fr; gap:0; border-radius:26px; overflow:hidden; box-shadow:var(--shadow);}
+  .split-img{min-height:560px; background:url('https://images.unsplash.com/photo-1535141192574-5d4897c12636?auto=format&fit=crop&w=1200&q=80') center/cover;}
+  .split-form{background:var(--white); padding:56px 48px;}
+  .split-form h2{font-size:2rem; margin-bottom:12px;}
+  .split-form > p{color:var(--muted); margin-bottom:30px;}
+  .form-row{display:grid; grid-template-columns:1fr 1fr; gap:16px; margin-bottom:16px;}
+  .form-field{display:flex; flex-direction:column; gap:6px;}
+  .form-field.full{grid-column:1/-1;}
+  label{font-size:.82rem; font-weight:600; color:var(--brown-2);}
+  input, select, textarea{
+    padding:13px 15px; border-radius:10px; border:1px solid rgba(59,33,22,.18);
+    font-family:inherit; font-size:.94rem; background:var(--cream); color:var(--ink);
+  }
+  input:focus, select:focus, textarea:focus{outline:2px solid var(--caramel); outline-offset:1px;}
+  textarea{resize:vertical; min-height:90px;}
+  .split-form .btn{width:100%; justify-content:center; margin-top:8px;}
+
+  /* why cards */
+  .why-grid{display:grid; grid-template-columns:repeat(4,1fr); gap:24px;}
+  .why-card{background:var(--white); border-radius:18px; padding:34px 26px; box-shadow:0 14px 30px -20px rgba(59,33,22,.3); text-align:left;}
+  .why-card i{font-size:1.6rem; color:var(--caramel); margin-bottom:16px; display:inline-block;}
+  .why-card h3{font-size:1.1rem; margin-bottom:8px;}
+  .why-card p{color:var(--muted); font-size:.92rem;}
+  .stat-card{background:var(--maroon); color:#fff;}
+  .stat-card .big{font-family:var(--serif); font-size:2.2rem; font-weight:700;}
+  .stat-card p{color:rgba(255,255,255,.85);}
+
+  /* reviews */
+  .review-grid{display:grid; grid-template-columns:repeat(3,1fr); gap:26px;}
+  .review-card{background:var(--white); border-radius:18px; padding:30px; box-shadow:0 14px 30px -20px rgba(59,33,22,.25);}
+  .review-card .stars{color:var(--gold); margin-bottom:14px;}
+  .review-card p{color:var(--brown-2); font-size:.96rem; margin-bottom:16px;}
+  .review-card span{font-size:.85rem; font-weight:600; color:var(--muted);}
+  .reviews-cta{text-align:center; margin-top:40px;}
+
+  /* gallery */
+  .masonry{column-count:4; column-gap:18px;}
+  .masonry figure{break-inside:avoid; margin-bottom:18px; border-radius:16px; overflow:hidden; position:relative; cursor:pointer;}
+  .masonry img{width:100%; display:block; transition:transform .5s ease;}
+  .masonry figure:hover img{transform:scale(1.06);}
+  .masonry figure::after{content:'\f00e'; font-family:'Font Awesome 6 Free'; font-weight:900; color:#fff; position:absolute; inset:0; display:flex; align-items:center; justify-content:center; font-size:1.4rem; background:rgba(20,10,6,0); transition:.3s;}
+  .masonry figure:hover::after{background:rgba(20,10,6,.35);}
+  .lightbox{position:fixed; inset:0; background:rgba(10,5,3,.92); z-index:1200; display:none; align-items:center; justify-content:center; padding:40px;}
+  .lightbox.open{display:flex;}
+  .lightbox img{max-width:90vw; max-height:85vh; border-radius:10px;}
+  .lightbox-close{position:absolute; top:24px; right:32px; color:#fff; font-size:2rem; background:none;}
+
+  /* about */
+  .about{display:grid; grid-template-columns:1fr 1fr; gap:60px; align-items:center;}
+  .about-img{border-radius:24px; overflow:hidden; box-shadow:var(--shadow);}
+  .about h2{font-size:2.4rem; margin-bottom:20px;}
+  .about p{color:var(--muted); font-size:1.05rem;}
+
+  /* location */
+  .loc{display:grid; grid-template-columns:1fr 1fr; gap:50px; align-items:center;}
+  .loc-card{background:var(--white); border-radius:22px; padding:44px; box-shadow:var(--shadow);}
+  .loc-row{display:flex; gap:16px; margin-bottom:22px;}
+  .loc-row i{color:var(--caramel); font-size:1.2rem; margin-top:3px;}
+  .loc-row h4{font-size:1rem; margin-bottom:4px; color:var(--brown);}
+  .loc-row p{color:var(--muted); font-size:.94rem;}
+  .loc-btns{display:flex; gap:14px; margin-top:30px; flex-wrap:wrap;}
+  .map-frame{border-radius:22px; overflow:hidden; height:100%; min-height:380px; box-shadow:var(--shadow);}
+  .map-frame iframe{width:100%; height:100%; min-height:380px; border:0;}
+
+  /* final cta */
+  .final-cta{
+    background:linear-gradient(135deg, var(--brown), var(--maroon));
+    border-radius:30px; padding:80px 40px; text-align:center; color:#fff; margin:0 24px;
+  }
+  .final-cta h2{color:#fff; font-size:clamp(2rem,4vw,2.8rem);}
+  .final-cta p{color:rgba(255,255,255,.85); margin:16px 0 34px; font-size:1.1rem;}
+  .final-cta .hero-btns{justify-content:center;}
+
+  /* footer */
+  footer{background:var(--brown); color:rgba(255,255,255,.75); padding:70px 0 30px; margin-top:100px;}
+  .foot-grid{display:grid; grid-template-columns:1.4fr 1fr 1fr 1fr; gap:40px; padding-bottom:40px; border-bottom:1px solid rgba(255,255,255,.12);}
+  footer .logo b, footer .logo span{color:#fff;}
+  footer .logo span{color:var(--gold);}
+  footer p.tag{margin-top:14px; font-size:.9rem;}
+  footer h5{color:#fff; font-family:var(--serif); font-size:1.05rem; margin-bottom:18px; font-weight:500;}
+  footer li{margin-bottom:10px; font-size:.92rem;}
+  footer li a:hover{color:var(--gold);}
+  .foot-bottom{text-align:center; padding-top:24px; font-size:.85rem;}
+
+  /* sticky mobile bar */
+  .mobile-bar{display:none; position:fixed; bottom:0; left:0; right:0; z-index:950; background:var(--brown); }
+  .mobile-bar{grid-template-columns:1fr 1fr;}
+  .mobile-bar a{display:flex; align-items:center; justify-content:center; gap:8px; color:#fff; padding:16px 0; font-weight:600; font-size:.92rem;}
+  .mobile-bar a:first-child{background:#1EBE5A;}
+  .mobile-bar a:last-child{background:var(--maroon);}
+
+  /* RESPONSIVE */
+  @media (max-width:1024px){
+    .cards-3, .why-grid, .review-grid{grid-template-columns:repeat(2,1fr);}
+    .product-grid{grid-template-columns:repeat(3,1fr);}
+    .masonry{column-count:3;}
+    .split, .about, .loc{grid-template-columns:1fr;}
+    .split-img{min-height:320px;}
+  }
+  @media (max-width:768px){
+    .nav-links, .nav-cta .btn:first-child{display:none;}
+    .hamburger{display:flex;}
+    section{padding:70px 0;}
+    .cards-3, .why-grid, .review-grid{grid-template-columns:1fr 1fr;}
+    .product-grid{grid-template-columns:repeat(2,1fr);}
+    .masonry{column-count:2;}
+    .foot-grid{grid-template-columns:1fr 1fr; gap:30px;}
+    .float-wa{bottom:86px;}
+    .mobile-bar{display:grid;}
+    body{padding-bottom:58px;}
+    .split-form{padding:36px 26px;}
+    .form-row{grid-template-columns:1fr;}
+    .loc-card{padding:30px 24px;}
+  }
+  @media (max-width:520px){
+    .cards-3, .why-grid, .review-grid, .product-grid{grid-template-columns:1fr 1fr;}
+    .hero-content{padding-top:70px;}
+  }
+</style>
+</head>
+<body>
+
+<!-- NAVBAR -->
+<header id="header">
+  <nav class="nav container">
+    <a href="#home" class="logo"><b>LAXMI</b><span>BAKERY</span></a>
+    <ul class="nav-links">
+      <li><a href="#home">Home</a></li>
+      <li><a href="#cakes">Cakes</a></li>
+      <li><a href="#pastries">Pastries</a></li>
+      <li><a href="#about">About</a></li>
+      <li><a href="#gallery">Gallery</a></li>
+      <li><a href="#location">Contact</a></li>
+    </ul>
+    <div class="nav-cta">
+      <a class="btn btn-primary" id="navWa" target="_blank" rel="noopener"><i class="fa-brands fa-whatsapp"></i> Order on WhatsApp</a>
+      <button class="hamburger" id="hamburgerBtn" aria-label="Open menu"><span></span><span></span><span></span></button>
+    </div>
+  </nav>
+</header>
+
+<div class="overlay" id="overlay"></div>
+<div class="mobile-menu" id="mobileMenu">
+  <button class="menu-close" id="menuClose" aria-label="Close menu"><i class="fa-solid fa-xmark"></i></button>
+  <a href="#home">Home</a>
+  <a href="#cakes">Cakes</a>
+  <a href="#pastries">Pastries</a>
+  <a href="#about">About</a>
+  <a href="#gallery">Gallery</a>
+  <a href="#location">Contact</a>
+</div>
+
+<!-- HERO -->
+<section class="hero" id="home">
+  <div class="container">
+    <div class="hero-content">
+      <h1>Freshly Baked.<br>Made for Every Celebration.</h1>
+      <p class="sub">Cakes, pastries and bakery favourites made for the moments that matter.</p>
+      <div class="hero-btns">
+        <a href="#cakes" class="btn btn-primary"><i class="fa-solid fa-cake-candles"></i> Explore Cakes</a>
+        <a class="btn btn-outline wa-link" target="_blank" rel="noopener"><i class="fa-brands fa-whatsapp"></i> Order on WhatsApp</a>
+      </div>
+      <div class="trust">
+        <div><i class="fa-solid fa-star"></i> 4.3 Rating</div>
+        <div><i class="fa-solid fa-comment"></i> 1,000+ Reviews</div>
+        <div><i class="fa-solid fa-clock"></i> Open Daily</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<a class="float-wa wa-link" target="_blank" rel="noopener" aria-label="Chat on WhatsApp"><i class="fa-brands fa-whatsapp"></i></a>
+
+<!-- FEATURED CAKES -->
+<section id="cakes">
+  <div class="container">
+    <div class="section-head reveal">
+      <span class="eyebrow">Featured</span>
+      <h2>Made for Every Celebration</h2>
+      <p>Our most-loved cakes, freshly prepared for birthdays, anniversaries and everyday sweetness.</p>
+    </div>
+    <div class="grid cards-3" id="featuredGrid"></div>
+  </div>
+</section>
+
+<!-- CAKE COLLECTION -->
+<section class="tint" id="collection">
+  <div class="container">
+    <div class="section-head reveal">
+      <span class="eyebrow">Browse</span>
+      <h2>Our Cake Collection</h2>
+      <p>Filter by the flavour you're craving.</p>
+    </div>
+    <div class="filters reveal">
+      <button class="filter-btn active" data-filter="all">All</button>
+      <button class="filter-btn" data-filter="chocolate">Chocolate</button>
+      <button class="filter-btn" data-filter="classic">Classic</button>
+      <button class="filter-btn" data-filter="fruit">Fruit</button>
+      <button class="filter-btn" data-filter="celebration">Celebration</button>
+    </div>
+    <div class="product-grid" id="productGrid"></div>
+  </div>
+</section>
+
+<!-- CUSTOM ENQUIRY -->
+<section id="enquiry">
+  <div class="container">
+    <div class="split reveal">
+      <div class="split-img" role="img" aria-label="Celebration cake"></div>
+      <div class="split-form">
+        <h2>Planning Something Special?</h2>
+        <p>Tell us what you're celebrating and we'll help you find the right cake.</p>
+        <form id="enquiryForm">
+          <div class="form-row">
+            <div class="form-field"><label for="c-name">Name</label><input id="c-name" required placeholder="Your name"></div>
+            <div class="form-field"><label for="c-phone">Phone Number</label><input id="c-phone" required type="tel" placeholder="Your phone number"></div>
+          </div>
+          <div class="form-row">
+            <div class="form-field">
+              <label for="c-type">Cake Type</label>
+              <select id="c-type">
+                <option>Chocolate Cake</option><option>Black Forest</option><option>Fresh Fruit Cake</option>
+                <option>Celebration Cake</option><option>Vanilla Cake</option><option>Other</option>
+              </select>
+            </div>
+            <div class="form-field">
+              <label for="c-occasion">Occasion</label>
+              <select id="c-occasion">
+                <option>Birthday</option><option>Anniversary</option><option>Wedding</option>
+                <option>Festival</option><option>Other</option>
+              </select>
+            </div>
+          </div>
+          <div class="form-row">
+            <div class="form-field full"><label for="c-date">Preferred Date</label><input id="c-date" type="date"></div>
+          </div>
+          <div class="form-row">
+            <div class="form-field full"><label for="c-msg">Message</label><textarea id="c-msg" placeholder="Any details you'd like to share..."></textarea></div>
+          </div>
+          <button type="submit" class="btn btn-primary"><i class="fa-brands fa-whatsapp"></i> Send Enquiry on WhatsApp</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- BAKERY FAVOURITES -->
+<section class="tint" id="pastries">
+  <div class="container">
+    <div class="section-head reveal">
+      <span class="eyebrow">Everyday Favourites</span>
+      <h2>More Than Just Cakes</h2>
+      <p>Pastries, breads and bakery snacks for every craving.</p>
+    </div>
+    <div class="grid cards-4" id="favGrid"></div>
+  </div>
+</section>
+
+<!-- WHY -->
+<section id="why">
+  <div class="container">
+    <div class="section-head reveal">
+      <span class="eyebrow">Why Laxmi Bakery</span>
+      <h2>Baked With Care, Trusted By Bhuj</h2>
+    </div>
+    <div class="why-grid">
+      <div class="why-card reveal"><i class="fa-solid fa-bread-slice"></i><h3>Freshly Prepared</h3><p>Bakery favourites for everyday cravings and special moments.</p></div>
+      <div class="why-card reveal"><i class="fa-solid fa-store"></i><h3>Something for Everyone</h3><p>Cakes, pastries, breads and snacks under one roof.</p></div>
+      <div class="why-card reveal"><i class="fa-solid fa-gift"></i><h3>Made for Celebrations</h3><p>Birthday, anniversary and special occasion cakes.</p></div>
+      <div class="why-card stat-card reveal">
+        <div class="big">4.3 ★</div>
+        <p>1,000+ Reviews</p>
+        <p style="margin-top:8px; font-size:.82rem;">Local Favourite</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- REVIEWS -->
+<section class="tint" id="reviews">
+  <div class="container">
+    <div class="section-head reveal">
+      <span class="eyebrow">Customer Feedback</span>
+      <h2>What People Are Saying</h2>
+    </div>
+    <div class="review-grid">
+      <div class="review-card reveal">
+        <div class="stars">★★★★★</div>
+        <p>"Ordered a cake for my daughter's birthday and it was fresh, soft and exactly what we wanted."</p>
+        <span>Customer Feedback</span>
+      </div>
+      <div class="review-card reveal">
+        <div class="stars">★★★★☆</div>
+        <p>"Great variety of pastries and the bread is always fresh. Our go-to bakery in Bhuj."</p>
+        <span>Customer Feedback</span>
+      </div>
+      <div class="review-card reveal">
+        <div class="stars">★★★★★</div>
+        <p>"The celebration cake looked beautiful and tasted even better. Highly recommend."</p>
+        <span>Customer Feedback</span>
+      </div>
+    </div>
+    <div class="reviews-cta reveal">
+      <button class="btn btn-ghost" type="button"><i class="fa-solid fa-star"></i> View More Reviews</button>
+    </div>
+  </div>
+</section>
+
+<!-- GALLERY -->
+<section id="gallery">
+  <div class="container">
+    <div class="section-head reveal">
+      <span class="eyebrow">Gallery</span>
+      <h2>A Look Inside Laxmi Bakery</h2>
+    </div>
+    <div class="masonry" id="masonryGrid"></div>
+  </div>
+</section>
+
+<div class="lightbox" id="lightbox">
+  <button class="lightbox-close" id="lightboxClose" aria-label="Close">&times;</button>
+  <img id="lightboxImg" src="" alt="">
+</div>
+
+<!-- ABOUT -->
+<section class="tint" id="about">
+  <div class="container about">
+    <div class="about-img reveal">
+      <img src="https://images.unsplash.com/photo-1509440159596-0249088772ff?auto=format&fit=crop&w=900&q=80" alt="Bakery counter with fresh bread and pastries" loading="lazy">
+    </div>
+    <div class="reveal">
+      <span class="eyebrow">About Us</span>
+      <h2>A Bakery for Bhuj</h2>
+      <p>Laxmi Bakery brings together cakes, pastries, breads and everyday bakery favourites for customers in Bhuj. Whether it's a birthday, anniversary, celebration or simply a sweet craving, there's something for every occasion.</p>
+    </div>
+  </div>
+</section>
+
+<!-- LOCATION -->
+<section id="location">
+  <div class="container">
+    <div class="section-head reveal">
+      <span class="eyebrow">Visit Us</span>
+      <h2>Visit Laxmi Bakery</h2>
+    </div>
+    <div class="loc">
+      <div class="loc-card reveal">
+        <div class="loc-row"><i class="fa-solid fa-location-dot"></i><div><h4>Address</h4><p>Opp. Jubilee Ground, Near Balaji Travels, Vijay Nagar, Bhuj, Gujarat – 370001</p></div></div>
+        <div class="loc-row"><i class="fa-solid fa-clock"></i><div><h4>Opening Hours</h4><p>Every Day, 9:00 AM – 10:30 PM</p></div></div>
+        <div class="loc-row"><i class="fa-solid fa-phone"></i><div><h4>Phone</h4><p>+91 78745 35333</p></div></div>
+        <div class="loc-btns">
+          <a class="btn btn-primary" href="https://www.google.com/maps/search/?api=1&query=Laxmi%20Bakery%2C%20Opp.%20Jubilee%20Ground%2C%20Near%20Balaji%20Travels%2C%20Vijay%20Nagar%2C%20Bhuj%2C%20Gujarat%20370001" target="_blank" rel="noopener"><i class="fa-solid fa-diamond-turn-right"></i> Get Directions</a>
+          <a class="btn btn-ghost" href="tel:+917874535333"><i class="fa-solid fa-phone"></i> Call Now</a>
+        </div>
+      </div>
+      <div class="map-frame reveal">
+        <iframe src="https://maps.google.com/maps?q=Opp.%20Jubilee%20Ground%2C%20Near%20Balaji%20Travels%2C%20Vijay%20Nagar%2C%20Bhuj%2C%20Gujarat%20370001&t=&z=15&output=embed" loading="lazy" title="Laxmi Bakery location map" allowfullscreen></iframe>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FINAL CTA -->
+<section id="cta-final">
+  <div class="final-cta reveal">
+    <h2>Your Next Celebration Starts Here. 🎂</h2>
+    <p>Looking for a cake for your next special occasion?</p>
+    <div class="hero-btns">
+      <a class="btn btn-primary wa-link" target="_blank" rel="noopener"><i class="fa-brands fa-whatsapp"></i> WhatsApp Us</a>
+      <a class="btn btn-outline" href="tel:+917874535333"><i class="fa-solid fa-phone"></i> Call Now</a>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="container">
+    <div class="foot-grid">
+      <div>
+        <a href="#home" class="logo"><b>LAXMI</b><span>BAKERY</span></a>
+        <p class="tag">Cakes • Pastries • Breads • Bakery Favourites</p>
+      </div>
+      <div>
+        <h5>Explore</h5>
+        <ul>
+          <li><a href="#home">Home</a></li>
+          <li><a href="#cakes">Cakes</a></li>
+          <li><a href="#about">About</a></li>
+          <li><a href="#gallery">Gallery</a></li>
+          <li><a href="#location">Contact</a></li>
+        </ul>
+      </div>
+      <div>
+        <h5>Contact</h5>
+        <ul>
+          <li><i class="fa-solid fa-phone"></i> +91 78745 35333</li>
+          <li>Opp. Jubilee Ground, Vijay Nagar, Bhuj, Gujarat</li>
+        </ul>
+      </div>
+      <div>
+        <h5>Hours</h5>
+        <ul><li>9:00 AM – 10:30 PM</li><li>Open Every Day</li></ul>
+      </div>
+    </div>
+    <div class="foot-bottom">&copy; 2026 Laxmi Bakery. All rights reserved.</div>
+  </div>
+</footer>
+
+<div class="mobile-bar">
+  <a class="wa-link" target="_blank" rel="noopener"><i class="fa-brands fa-whatsapp"></i> WhatsApp</a>
+  <a href="tel:+917874535333"><i class="fa-solid fa-phone"></i> Call</a>
+</div>
+
+<script>
+(function(){
+  const PHONE = "917874535333";
+  const waBase = (text) => `https://wa.me/${PHONE}?text=${encodeURIComponent(text)}`;
+
+  // set default WA links
+  document.querySelectorAll('.wa-link').forEach(el=>{
+    el.href = waBase("Hi Laxmi Bakery, I would like to enquire about your cakes.");
+  });
+  document.getElementById('navWa').href = waBase("Hi Laxmi Bakery, I would like to enquire about your cakes.");
+
+  // navbar scroll effect
+  const header = document.getElementById('header');
+  window.addEventListener('scroll', ()=>{
+    header.classList.toggle('scrolled', window.scrollY > 40);
+  });
+
+  // mobile menu
+  const hamburger = document.getElementById('hamburgerBtn');
+  const menu = document.getElementById('mobileMenu');
+  const overlay = document.getElementById('overlay');
+  const closeBtn = document.getElementById('menuClose');
+  function openMenu(){ menu.classList.add('open'); overlay.classList.add('open'); }
+  function closeMenu(){ menu.classList.remove('open'); overlay.classList.remove('open'); }
+  hamburger.addEventListener('click', openMenu);
+  closeBtn.addEventListener('click', closeMenu);
+  overlay.addEventListener('click', closeMenu);
+  menu.querySelectorAll('a').forEach(a=>a.addEventListener('click', closeMenu));
+
+  // data
+  const featured = [
+    ["Chocolate Cake","Rich, moist chocolate sponge layered with silky chocolate cream.","https://images.unsplash.com/photo-1606313564200-e75d5e30476c?auto=format&fit=crop&w=600&q=80"],
+    ["Black Forest Cake","Classic chocolate sponge, cherries and fresh whipped cream.","https://images.unsplash.com/photo-1571115177098-24ec42ed204d?auto=format&fit=crop&w=600&q=80"],
+    ["Choco Truffle Cake","Decadent chocolate truffle layers finished with a glossy ganache.","https://images.unsplash.com/photo-1587314168485-3236d6710814?auto=format&fit=crop&w=600&q=80"],
+    ["Oreo Cake","Crushed Oreo cookies folded into a creamy chocolate cake.","https://images.unsplash.com/photo-1621303837174-89787a7d4729?auto=format&fit=crop&w=600&q=80"],
+    ["Fresh Fruit Cake","Light sponge topped with a colourful medley of fresh fruit.","https://images.unsplash.com/photo-1565958011703-44f9829ba187?auto=format&fit=crop&w=600&q=80"],
+    ["Celebration Cake","A festive centrepiece cake made for your special day.","https://images.unsplash.com/photo-1464349095431-e9a21285b5f3?auto=format&fit=crop&w=600&q=80"]
+  ];
+  const featGrid = document.getElementById('featuredGrid');
+  featured.forEach(([name,desc,img])=>{
+    featGrid.insertAdjacentHTML('beforeend', `
+      <div class="card reveal">
+        <div class="img-wrap"><img src="${img}" alt="${name}" loading="lazy"></div>
+        <div class="card-body">
+          <h3>${name}</h3>
+          <p>${desc}</p>
+          <a class="enquire" target="_blank" rel="noopener" href="${waBase('Hi Laxmi Bakery, I would like to enquire about the '+name+'.')}">Enquire <i class="fa-solid fa-arrow-right"></i></a>
+        </div>
+      </div>`);
+  });
+
+  const products = [
+    ["Chocolate Cake","chocolate","https://images.unsplash.com/photo-1606313564200-e75d5e30476c?auto=format&fit=crop&w=400&q=80"],
+    ["Black Forest","chocolate","https://images.unsplash.com/photo-1571115177098-24ec42ed204d?auto=format&fit=crop&w=400&q=80"],
+    ["White Forest","classic","https://images.unsplash.com/photo-1621303837174-89787a7d4729?auto=format&fit=crop&w=400&q=80"],
+    ["Choco Truffle","chocolate","https://images.unsplash.com/photo-1587314168485-3236d6710814?auto=format&fit=crop&w=400&q=80"],
+    ["Oreo Cake","chocolate","https://images.unsplash.com/photo-1541599468348-e96984315921?auto=format&fit=crop&w=400&q=80"],
+    ["Chocolate Crunch","chocolate","https://images.unsplash.com/photo-1606890658317-7c1dbc7f0d38?auto=format&fit=crop&w=400&q=80"],
+    ["Fresh Fruit Cake","fruit","https://images.unsplash.com/photo-1565958011703-44f9829ba187?auto=format&fit=crop&w=400&q=80"],
+    ["Mixed Fruit Cake","fruit","https://images.unsplash.com/photo-1621303837174-89787a7d4729?auto=format&fit=crop&w=400&q=80"],
+    ["Vanilla Cake","classic","https://images.unsplash.com/photo-1618889482923-38250401a84e?auto=format&fit=crop&w=400&q=80"],
+    ["Strawberry Cake","fruit","https://images.unsplash.com/photo-1565958011703-44f9829ba187?auto=format&fit=crop&w=400&q=80"],
+    ["Blueberry Cake","fruit","https://images.unsplash.com/photo-1519869325930-281384150729?auto=format&fit=crop&w=400&q=80"],
+    ["Celebration Cake","celebration","https://images.unsplash.com/photo-1464349095431-e9a21285b5f3?auto=format&fit=crop&w=400&q=80"]
+  ];
+  const prodGrid = document.getElementById('productGrid');
+  products.forEach(([name,cat,img])=>{
+    prodGrid.insertAdjacentHTML('beforeend', `
+      <div class="product reveal" data-cat="${cat}">
+        <img src="${img}" alt="${name}" loading="lazy">
+        <div class="p-info">
+          <h4>${name}</h4>
+          <a target="_blank" rel="noopener" href="${waBase('Hi Laxmi Bakery, I would like to enquire about the '+name+'.')}">Enquire <i class="fa-solid fa-arrow-right"></i></a>
+        </div>
+      </div>`);
+  });
+  document.querySelectorAll('.filter-btn').forEach(btn=>{
+    btn.addEventListener('click', ()=>{
+      document.querySelectorAll('.filter-btn').forEach(b=>b.classList.remove('active'));
+      btn.classList.add('active');
+      const f = btn.dataset.filter;
+      document.querySelectorAll('.product').forEach(p=>{
+        const show = f === 'all' || p.dataset.cat === f;
+        p.style.transition = 'opacity .3s ease, transform .3s ease';
+        if(show){ p.classList.remove('hide'); requestAnimationFrame(()=>{p.style.opacity=1; p.style.transform='none';}); }
+        else{ p.style.opacity=0; p.style.transform='scale(.92)'; setTimeout(()=>p.classList.add('hide'),280); }
+      });
+    });
+  });
+
+  const favourites = [
+    ["Black Forest Pastry","https://images.unsplash.com/photo-1587668178277-295251f900ce?auto=format&fit=crop&w=400&q=80"],
+    ["Choco Truffle Pastry","https://images.unsplash.com/photo-1587314168485-3236d6710814?auto=format&fit=crop&w=400&q=80"],
+    ["Oreo Pastry","https://images.unsplash.com/photo-1541599468348-e96984315921?auto=format&fit=crop&w=400&q=80"],
+    ["Chocolate Pastry","https://images.unsplash.com/photo-1606313564200-e75d5e30476c?auto=format&fit=crop&w=400&q=80"],
+    ["Milk Toast","https://images.unsplash.com/photo-1509440159596-0249088772ff?auto=format&fit=crop&w=400&q=80"],
+    ["Jeera Toast","https://images.unsplash.com/photo-1509440159596-0249088772ff?auto=format&fit=crop&w=400&q=80"],
+    ["Khari","https://images.unsplash.com/photo-1509440159596-0249088772ff?auto=format&fit=crop&w=400&q=80"],
+    ["Bread","https://images.unsplash.com/photo-1509440159596-0249088772ff?auto=format&fit=crop&w=400&q=80"],
+    ["Pav","https://images.unsplash.com/photo-1509440159596-0249088772ff?auto=format&fit=crop&w=400&q=80"],
+    ["Bakery Snacks","https://images.unsplash.com/photo-1509440159596-0249088772ff?auto=format&fit=crop&w=400&q=80"]
+  ];
+  const favGrid = document.getElementById('favGrid');
+  favourites.forEach(([name,img])=>{
+    favGrid.insertAdjacentHTML('beforeend', `
+      <div class="card reveal">
+        <div class="img-wrap"><img src="${img}" alt="${name}" loading="lazy"></div>
+        <div class="card-body">
+          <h3>${name}</h3>
+          <a class="enquire" target="_blank" rel="noopener" href="${waBase('Hi Laxmi Bakery, I would like to enquire about '+name+'.')}">Enquire <i class="fa-solid fa-arrow-right"></i></a>
+        </div>
+      </div>`);
+  });
+
+  const gallery = [
+    "https://images.unsplash.com/photo-1606313564200-e75d5e30476c?auto=format&fit=crop&w=700&q=80",
+    "https://images.unsplash.com/photo-1464349095431-e9a21285b5f3?auto=format&fit=crop&w=700&q=80",
+    "https://images.unsplash.com/photo-1587314168485-3236d6710814?auto=format&fit=crop&w=700&q=80",
+    "https://images.unsplash.com/photo-1509440159596-0249088772ff?auto=format&fit=crop&w=700&q=80",
+    "https://images.unsplash.com/photo-1571115177098-24ec42ed204d?auto=format&fit=crop&w=700&q=80",
+    "https://images.unsplash.com/photo-1509440159596-0249088772ff?auto=format&fit=crop&w=700&q=80",
+    "https://images.unsplash.com/photo-1565958011703-44f9829ba187?auto=format&fit=crop&w=700&q=80",
+    "https://images.unsplash.com/photo-1521389508051-d7ffb5dc8bbf?auto=format&fit=crop&w=700&q=80"
+  ];
+  const galLabels = ["Chocolate cake","Birthday cake","Pastries","Bakery counter","Celebration cake","Bread","Bakery products","Store ambience"];
+  const masonry = document.getElementById('masonryGrid');
+  gallery.forEach((img,i)=>{
+    masonry.insertAdjacentHTML('beforeend', `<figure data-full="${img}"><img src="${img}" alt="${galLabels[i]}" loading="lazy"></figure>`);
+  });
+
+  const lightbox = document.getElementById('lightbox');
+  const lightboxImg = document.getElementById('lightboxImg');
+  masonry.addEventListener('click', (e)=>{
+    const fig = e.target.closest('figure');
+    if(!fig) return;
+    lightboxImg.src = fig.dataset.full;
+    lightboxImg.alt = fig.querySelector('img').alt;
+    lightbox.classList.add('open');
+  });
+  document.getElementById('lightboxClose').addEventListener('click', ()=>lightbox.classList.remove('open'));
+  lightbox.addEventListener('click', (e)=>{ if(e.target === lightbox) lightbox.classList.remove('open'); });
+
+  // enquiry form
+  document.getElementById('enquiryForm').addEventListener('submit', function(e){
+    e.preventDefault();
+    const name = document.getElementById('c-name').value.trim();
+    const phone = document.getElementById('c-phone').value.trim();
+    const type = document.getElementById('c-type').value;
+    const occasion = document.getElementById('c-occasion').value;
+    const date = document.getElementById('c-date').value;
+    const msg = document.getElementById('c-msg').value.trim();
+    let text = `Hi Laxmi Bakery, I would like to enquire about a cake.\nName: ${name}\nPhone: ${phone}\nCake Type: ${type}\nOccasion: ${occasion}`;
+    if(date) text += `\nPreferred Date: ${date}`;
+    if(msg) text += `\nMessage: ${msg}`;
+    window.open(waBase(text), '_blank');
+  });
+
+  // scroll reveal
+  const revealEls = document.querySelectorAll('.reveal');
+  if('IntersectionObserver' in window){
+    const io = new IntersectionObserver((entries)=>{
+      entries.forEach(entry=>{
+        if(entry.isIntersecting){ entry.target.classList.add('in'); io.unobserve(entry.target); }
+      });
+    }, {threshold:.15});
+    revealEls.forEach(el=>io.observe(el));
+  } else {
+    revealEls.forEach(el=>el.classList.add('in'));
+  }
+})();
+</script>
+</body>
+</html>
